@@ -23,9 +23,9 @@ print(y.shape)
 # (1628, 499)
 
 def simple_model():
-    layer1 = layers.Dense(500, input_shape=(77,), activation='relu')
+    layer1 = layers.Dense(1000, activation='relu')
     layer1a = layers.Dropout(0.3)
-    layer2 = layers.Dense(500, input_shape=(500,), activation='relu')
+    layer2 = layers.Dense(1000, activation='relu')
     layer2a = layers.Dropout(0.3)
     layer3 = layers.Dense(499, activation='sigmoid')
     model = tf.keras.Sequential()

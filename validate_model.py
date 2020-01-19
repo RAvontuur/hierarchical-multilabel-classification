@@ -30,3 +30,6 @@ def validate(file_name, model_name):
 validate(file_name_train, 'simple.h5')
 validate(file_name_validate, 'simple.h5')
 validate(file_name_test, 'simple.h5')
+validate(file_name_train, 'hmcnf.h5')
+validate(file_name_validate, 'hmcnf.h5')
+validate(file_name_test, 'hmcnf.h5')
