@@ -40,7 +40,7 @@ def hierarchical(spec):
         hierarchy_sizes.append(len(h))
         hierarchy_sizes_sum += len(h)
 
-    print("hierarchy-sizes {}, sum={}\n".format(hierarchy_sizes, hierarchy_sizes_sum))
+    # print("hierarchy-sizes {}, sum={}\n".format(hierarchy_sizes, hierarchy_sizes_sum))
 
     def fn(v):
         result = [0] * hierarchy_sizes_sum

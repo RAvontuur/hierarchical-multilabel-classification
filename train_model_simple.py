@@ -4,8 +4,6 @@ import tensorflow as tf
 from tensorflow.keras import layers
 
 file_name1 = 'cellcycle/cellcycle_FUN.train.arff'
-file_name2 = 'cellcycle/cellcycle_FUN.train.arff'
-file_name3 = 'cellcycle/cellcycle_FUN.train.arff'
 
 x = []
 y = []
@@ -25,12 +23,16 @@ print(y.shape)
 # (1628, 499)
 
 def simple_model():
-    layer1 = layers.Dense(1000, input_shape=(77,), activation='relu')
-    layer2 = layers.Dense(1000, input_shape=(1000,), activation='relu')
-    layer3 = layers.Dense(499)
+    layer1 = layers.Dense(500, input_shape=(77,), activation='relu')
+    layer1a = layers.Dropout(0.3)
+    layer2 = layers.Dense(500, input_shape=(500,), activation='relu')
+    layer2a = layers.Dropout(0.3)
+    layer3 = layers.Dense(499, activation='sigmoid')
     model = tf.keras.Sequential()
     model.add(layer1)
+    model.add(layer1a)
     model.add(layer2)
+    model.add(layer2a)
     model.add(layer3)
     return model
 
@@ -43,7 +45,7 @@ model = tf.keras.Model(inputs=[features], outputs=[labels])
 
 
 model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
-              loss='mse',
+              loss='binary_crossentropy',
               metrics=['mae'])
 
 model.summary()
