@@ -30,22 +30,28 @@ def feat(i, j=None, k=None):
     return r
 
 
-def lab(i, j, k):
-    return feat(i, j, k)
+def lab(i):
+    r = [0] * label_size
+    r[i] = 1
+    return r
 
 
 x = [feat(0),
      feat(0, 0), feat(0, 0, 0), feat(0, 0, 1),
-     feat(0, 1), feat(0, 1, 0), feat(0, 1, 1),
+     feat(0, 1), feat(0, 1, 2), feat(0, 1, 3),
      feat(1),
-     feat(1, 0), feat(1, 0, 0), feat(1, 0, 1),
-     feat(1, 1), feat(1, 1, 0), feat(1, 1, 1),
+     feat(1, 2), feat(1, 2, 4), feat(1, 2, 5),
+     feat(1, 3), feat(1, 3, 6), feat(1, 3, 7),
      ]
-y = x
+y =  [lab(0),
+      lab(2), lab(6), lab(7),
+      lab(3), lab(8), lab(9),
+      lab(1),
+      lab(4), lab(10), lab(11),
+      lab(5), lab(12), lab(13)]
 
-
-x = np.array(x, dtype=float)
-y = np.array(y, dtype=int)
+x = np.repeat(np.array(x, dtype=float), 500, axis=0)
+y = np.repeat(np.array(y, dtype=int), 500, axis=0)
 
 def run_test(beta):
     print("beta = {}" .format(beta))
@@ -54,7 +60,7 @@ def run_test(beta):
 
     model.fit([x],
               [y],
-              epochs=500, batch_size=256)
+              epochs=100, batch_size=256)
 
     return validate(model, x, y)
 
